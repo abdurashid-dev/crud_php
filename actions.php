@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'inc/db.php';
 if(isset($_POST['submit'])){
     var_dump($_POST);
@@ -9,7 +10,8 @@ $password = $_POST['password'];
         $sql = "INSERT into users (name, email, password, date) VALUES('{$name}','{$email}','{$password}', NOW())";
         $query = mysqli_query($con, $sql);
         if($query){
-            header("Location: index.php?success=Created successfully");
+            $_SESSION['success'] = "Created successfully";
+            header("Location: index.php");
         }else{
             header("Location: index.php?error=Error occured");
         }

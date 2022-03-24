@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include "inc/header.php";
 	include "inc/db.php"
 ?>
@@ -14,10 +15,11 @@
 		</div>
 		<div class="card-body">
 			<?php
-				if(isset($_GET['success'])){
+				if(isset($_SESSION['success'])){
 					?>
-					<div class="alert alert-success"><?=$_GET['success']?></div>
+					<div class="alert alert-success"><?=$_SESSION['success']?></div>
 					<?php
+					unset($_SESSION['success']);
 				}
 				if(isset($_GET['error'])){
 					?>
