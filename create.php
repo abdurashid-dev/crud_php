@@ -9,7 +9,7 @@ include "inc/header.php";
         <div class="card-title">Create user</div>
     </div>
     <div class="card-body">
-        
+        <form action="" class="form-group"></form>
     </div>
 </div>
 <?php
