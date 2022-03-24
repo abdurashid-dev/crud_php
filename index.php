@@ -13,7 +13,40 @@
 			</div>
 		</div>
 		<div class="card-body">
-			users
+			<?php
+				if(isset($_GET['success'])){
+					?>
+					<div class="alert alert-success"><?=$_GET['success']?></div>
+					<?php
+				}
+				if(isset($_GET['error'])){
+					?>
+					<div class="alert alert-danger"><?=$_GET['error']?></div>
+					<?php
+				}
+			?>
+			<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>date</th>
+				</tr>
+				<?php
+				$sql = "SELECT * FROM users ORDER BY id DESC";
+				$query = mysqli_query($con, $sql);
+				while($users = mysqli_fetch_assoc($query)){
+					?>
+					<tr>
+						<td><?=$users['id']?></td>
+						<td><?=$users['name']?></td>
+						<td><?=$users['email']?></td>
+						<td><?=$users['date']?></td>
+					</tr>
+					<?php
+				}
+				?>
+			</table>
 		</div>
 	</div>
 </div>
